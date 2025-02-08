@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import TraficLight from "./components/TraficLight";
 
 const App = () => {
   return (
     <>
-      <h1>Hello Sonu!</h1>
+      <TraficLight />
     </>
   )
 }
