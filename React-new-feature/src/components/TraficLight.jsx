@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 let lightSequence = [
-    { color: "red", duration: 5000, text: "Stop", textColor: "white" },
-    { color: "green", duration: 5000, text: "Go", textColor: "white" },
-    { color: "yellow", duration: 5000, text: "Slow", textColor: "red" },
-];
+    { color: "red", duration: 5000, colortext: "white", text: "Stop" },
+    { color: "yellow", duration: 5000, colortext: "green", text: "Slow" },
+    { color: "green", duration: 5000, colortext: "white", text: "Go" },
+]
 
-const TrafficLight = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+const TraficLight = () => {
+    const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
         const timer = setTimeout(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % lightSequence.length);
         }, lightSequence[currentIndex].duration);
 
-        return () => clearTimeout(timer);
-    }, [currentIndex]);
+        return () => clearTimeout(timer)
+    }, [currentIndex])
 
-    return (<>
-        <h1 style={{ textAlign: "center" }} >Hello Sonu!</h1>
-        <div className="traffic-light-container">
-            <div className="traffic-light">
-                {lightSequence.map((li, index) => (
-                    <div
-                        key={li.color}
-                        className={`light ${li.color} ${index === currentIndex ? 'active' : ""}`}
-                    >
-                        {index === currentIndex && <h4 style={{ color: li.textColor }}>{li.text}</h4>}
-                    </div>
-                ))}
+    return (
+        <>
+            <div className="traffic-light-container">
+                <div className="traffic-light">
+                    {lightSequence.map((item, index) => (
+                        <div
+                            key={item.color}
+                            className={`light ${item.color} ${index === currentIndex ? "active" : ""}`}>
+                            {index == currentIndex && <h4 style={{ color: item.colortext }} > {item.text} </h4>}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    </>
-    );
-};
+        </>
+    )
+}
 
-export default TrafficLight;
+export default TraficLight;
