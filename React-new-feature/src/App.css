@@ -1,5 +1,3 @@
-
-
 .traffic-light-container {
   display: flex;
   justify-content: center;
@@ -52,4 +50,9 @@
   border: 2px solid black;
   display: inline;
   border-radius: 12px;
+}
+
+
+ul li .active{
+  color: red;
 }
